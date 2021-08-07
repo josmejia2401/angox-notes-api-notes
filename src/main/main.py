@@ -10,7 +10,7 @@ controller = Controller1(config)
 def running():
     return "Notes Running"
 
-@app.route('/api/v1/accounts/', methods=['POST'])
+@app.route('/api/v1/notes/', methods=['POST'])
 def create():
     try:
         if request.is_json:
@@ -24,7 +24,7 @@ def create():
         loggerx.error(e)
         return {}, 500
 
-@app.route('/api/v1/accounts/<id>', methods=['PUT'])
+@app.route('/api/v1/notes/<id>', methods=['PUT'])
 def update(id):
     try:
         if request.is_json:
@@ -38,7 +38,7 @@ def update(id):
         loggerx.error(e)
         return {}, 500
 
-@app.route('/api/v1/accounts/<id>', methods=['DELETE'])
+@app.route('/api/v1/notes/<id>', methods=['DELETE'])
 def delete(id):
     try:
         result = controller.delete(id=id)
@@ -49,7 +49,7 @@ def delete(id):
         loggerx.error(e)
         return {}, 500
 
-@app.route('/api/v1/accounts/<id>', methods=['GET'])
+@app.route('/api/v1/notes/<id>', methods=['GET'])
 def get(id):
     try:
         result = controller.get(id=id)
@@ -60,7 +60,7 @@ def get(id):
         loggerx.error(e)
         return {}, 500
 
-@app.route('/api/v1/accounts/', methods=['GET'])
+@app.route('/api/v1/notes/', methods=['GET'])
 def get_all():
     try:
         accountId = request.args.get("accountId")
